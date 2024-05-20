@@ -1,0 +1,46 @@
+<br/>
+<br/>
+<br/>
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+    <form id="frmCreateComment" method="post" action="comment">
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+        <input type="hidden" name="movieId" value="<%= movie.movieId %>">
+      <div class="form-group">
+        <label for="text" class="from-label">نظر</label>
+        <textarea name="text" id="text"></textarea>
+      </div>
+      <br />
+      <div class="form-group">
+        <button id="btnCreateActor" type="submit" class="btn btn-success">ثبت</button>
+      </div>
+    </form>
+  </div>
+  </div>
+  <% comments.map((item)=>{%>
+    <% if(item.isAccepted===true){ %>
+    <div class="card text-info" style="background-color: black;">
+      <div class="card-body">
+
+          <div class="form-group">
+            <h6><%= item.username?item.username:'کاربر' %></h6>
+            </hr>
+            <p class="text-warning"><%= item.text%></p>
+            <div class="form-group">
+              <h6><%= item.answer.length>0?'پاسخ':'' %></h6>
+              </hr>
+              <div class=" text-light"><%= item.answer?item.answer:'' %></div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </br>
+  </hr>
+   <%}}) %>
+  </div>
+
+
+
+ 
+  

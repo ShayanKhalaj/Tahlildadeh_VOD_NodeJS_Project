@@ -1,0 +1,188 @@
+<script>
+  // search
+
+  $(document).ready(function () {
+    $("#btnSearchAuthor").click(function (e) {
+      e.preventDefault();
+      var url = "AuthorManagement/search";
+      var formData = $("#frmSearchAuthor").serialize();
+      $.get(url, formData, function (data) {
+        console.log(data);
+        $("#grid").html(data);
+      });
+    });
+  });
+
+  // show create modal
+
+  $(document).ready(function () {
+    $("#btnCreateAuthorModalShow").click(function () {
+      var url = "AuthorManagement/createModal";
+      $.get(url, null, function (data) {
+        $("#dvModalContent").html(data);
+        $("#modal").modal("show");
+      });
+    });
+  });
+
+  // create
+
+  $(document).on("click", "#btnCreateAuthor", function (e) {
+    e.preventDefault();
+    var url = "AuthorManagement/create";
+    var formData = $("#frmCreateAuthor").serialize();
+    $.post(url, formData, function (op) {
+      if (op.success === true) {
+        alert(op.message);
+        $.get("AuthorManagement/search", null, function (data) {
+          $("#modal").modal("hide");
+          $("#grid").html(data);
+        });
+      } else {
+        alert(op.message);
+      }
+    });
+  });
+
+  // show edit modal
+
+  $(document).ready(function () {
+    $(".edit").click(function () {
+      var url = "AuthorManagement/editModal";
+      var authorId = $(this).attr("id");
+      $.get(url, { authorId: authorId }, function (data) {
+        $("#dvModalContent").html(data);
+        $("#modal").modal("show");
+      });
+    });
+  });
+
+  // edit
+
+  $(document).on("click", "#btnEditAuthor", function (e) {
+    e.preventDefault();
+    var url = "AuthorManagement/edit";
+    var formData = $("#frmEditAuthor").serialize();
+    $.post(url, formData, function (op) {
+      if (op.success === true) {
+        alert(op.message);
+        $.get("AuthorManagement/search", null, function (data) {
+          $("#modal").modal("hide");
+          $("#grid").html(data);
+        });
+      } else {
+        alert(op.message);
+      }
+    });
+  });
+
+  // delete
+
+  $(document).on("click", ".delete", function () {
+    var url = "AuthorManagement/delete";
+    var authorId = $(this).attr("id");
+    if (confirm("آیا برای حذف نویسنده مطمئن هستید؟")) {
+      $.post(url, { authorId: authorId }, function (op) {
+        if(op.success===true){
+          alert(op.message)
+          $.get('AuthorManagement/search',null,function(data){
+            $('#grid').html(data)
+          })
+        }
+        else{
+          alert(op.message)
+        }
+      });
+    }
+  });
+</script>
+
+<!--start form-->
+<div class="page-content-wrapper">
+  <div class="page-content">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-header">
+            <h6 class="mb-0"><%= pageTitle %></h6>
+          </div>
+          <div class="card-body">
+            <form id="frmSearchAuthor" method="get">
+              <div class="form-group">
+                <label class="from-label" for="authorId">انتخاب نویسنده</label>
+                <select
+                  class="form-control form-selct"
+                  name="authorId"
+                  id="authorId"
+                >
+                  <option value="">...انتخاب کنید...</option>
+                  <% selectAuthors.map((item)=>{ %>
+                  <option value="<%= item.authorId %>">
+                    <%= item.name %> <%= item.family %>
+                  </option>
+                  <% }) %>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="from-label" for="name">نام</label>
+                <input
+                  class="form-control form-control-lg mb-3"
+                  type="text"
+                  aria-label=".form-control-lg example"
+                  name="name"
+                  id="name"
+                />
+              </div>
+              <div class="form-group">
+                <label class="from-label" for="family">نام خانوادگی</label>
+                <input
+                  class="form-control form-control-lg mb-3"
+                  type="text"
+                  aria-label=".form-control-lg example"
+                  name="family"
+                  id="family"
+                />
+              </div>
+              <div class="form-group">
+                <button class="btn btn-primary" id="btnSearchAuthor">
+                  <i class="lni lni-search"></i>جستجو
+                </button>
+
+                <span
+                  id="btnCreateAuthorModalShow"
+                  type="button"
+                  class="btn btn-success"
+                  data-bs-toggle="modal"
+                  data-bs-target="#exampleLargeModal"
+                >
+                  <i class="lni lni-plus"></i>ثبت نویسنده جدید
+                </span>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="grid"><%- include('grid') %></div>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="modal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">ثبت و ویرایش</h5>
+      </div>
+      <div id="dvModalContent" class="modal-body">...</div>
+    </div>
+  </div>
+</div>

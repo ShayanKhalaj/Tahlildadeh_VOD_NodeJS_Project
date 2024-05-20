@@ -1,0 +1,36 @@
+
+<br/>
+<table 
+class="table table-bordered table-hover table-striped table-sm"
+>
+<h4>فیلم ها</h4>
+<tr>
+  <th>ردیف</th>
+  <th>نام فیلم</th>
+  <th></th>
+</tr>
+
+
+<% movies.map((item,index)=>{%>
+  <tr>
+  <td><%= index+1 %></td>
+  <td><%= item.movieName %></td>
+  <td>
+    <span
+      data-delete-box-movie="true"
+      data-id="<%= item.movieId %>"
+      page-id="dvPageContent"
+      data-post-url="BoxManagement/deleteBoxMovie"
+      data-get-url="BoxManagement"
+      data-confirm-message="آیا مطمئن هستید؟"
+      class="btn btn-outline-danger"
+    >
+      <i class="bx bx-x"></i>حذف
+    </span>
+  </td>
+</tr>
+<%}) %>
+
+</table>
+<hr/>
+<a href="BoxManagement" class="btn btn-outline-info">بازگشت</a>

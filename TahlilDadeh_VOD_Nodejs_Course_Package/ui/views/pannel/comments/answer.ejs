@@ -1,0 +1,25 @@
+<div class="col-12">
+    <form id="frmAnswer" method="post" action="CommentManagement/answer">
+      <input type="hidden" name="commentId" value="<%= comment.commentId %>" />
+      <input type="hidden" name="text" value="<%= comment.text %>" />
+      <input type="hidden" name="movieId" value="<%= comment.movieId %>" />
+      <input type="hidden" name="userId" value="<%= comment.userId %>" />
+      <input type="hidden" name="username" value="<%= comment.username %>" />
+      <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+      <br />
+      <div class="form-group">
+        <p class="text-info"><%= comment.text %></p>
+      </div>
+      <div class="form-group">
+        <label for="answer" class="from-label">پاسخ</label>
+        <textarea class="form-control"  name="answer" id="answer"></textarea>
+      </div>
+      <br />
+      <div class="form-group">
+        <button  type="submit" class="btn btn-warning">
+          ثبت پاسخ
+        </button>
+      </div>
+    </form>
+  </div>
+  

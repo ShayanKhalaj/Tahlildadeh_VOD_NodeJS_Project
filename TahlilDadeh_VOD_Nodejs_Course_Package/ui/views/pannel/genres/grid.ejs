@@ -1,0 +1,63 @@
+<!-- start grid-->
+<div class="page-content-wrapper">
+  <!-- start page content-->
+  <div class="page-content">
+    <div class="row">
+      <div class="col-xl-12 mx-auto">
+        <h6 class="mb-0 text-uppercase">کارگردان ها</h6>
+        <hr />
+        <div class="card">
+          <div class="card-body">
+            <table class="table mb-0 table-dark table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">ردیف</th>
+                  <th scope="col">نام ژانر</th>
+                  <th scope="col">توضیحات</th>
+                  <th scope="col"></th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <% genreSearchList.map((item,index)=>{%>
+                <tr>
+                  <td><%= index+1 %></td>
+                  <td><%= item.genreName %></td>
+                  <td><%= item.description %></td>
+                  <td>
+                    <span
+                      data-show-edit-modal="true"
+                      data-get-url="GenreManagement/editModal"
+                      data-id="<%= item.genreId %>"
+                      id="btnEditModalShow"
+                      class="btn btn-warning"
+                    >
+                      <i class="bx bx-edit"></i>ویرایش
+                    </span>
+                  </td>
+                  <td>
+                    <span
+                      data-delete="true"
+                      data-post-url="GenreManagement/delete"
+                      data-id="<%= item.genreId %>"
+                      data-get-url="GenreManagement/search"
+                      data-grid-id="grid"
+                      data-confirm-message="آیا مطمئن هستید میخواهید ژانر را حذف کنید؟"
+                      class="btn btn-danger"
+                      id="btnDelete"
+                    >
+                      <i class="bx bx-x"></i>حذف
+                    </span>
+                  </td>
+                </tr>
+                <%}) %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- end page content-->
+</div>

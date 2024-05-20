@@ -1,0 +1,180 @@
+<script>
+  //search
+
+  $(document).ready(function () {
+    $("#btnSearchActor").click(function (e) {
+      e.preventDefault();
+      var formData = $("#frmSearchActor").serialize();
+      var url = "ActorManagement/search";
+      $.get(url, formData, function (data) {
+        $("#grid").html(data);
+      });
+    });
+  });
+
+  //create modal show
+
+  $(document).ready(function () {
+    $("#btnCreateModal").click(function () {
+      var url = "ActorManagement/createModal";
+      $.get(url, null, function (data) {
+        $("#dvModalContent").html(data);
+        $("#modal").modal("show");
+      });
+    });
+  });
+
+  //create
+  $(document).on("click", "#btnCreateActor", function (e) {
+    e.preventDefault();
+    var formData = $("#frmCreateActor").serialize();
+    var url = `ActorManagement/create`;
+    $.post(url, formData, function (op) {
+      if (op.success === true) {
+        $("#modal").modal("hide");
+        $.get("ActorManagement/search", null, function (data) {
+          $("#grid").html(data);
+        });
+      } else {
+        alert(op.message);
+      }
+    });
+  });
+
+  //edit modal show
+  $(document).ready(function () {
+    $(".edit").click(function () {
+      var actorId = $(this).attr("id"); //attribute
+      $.get("ActorManagement/editModal", { actorId: actorId }, function (data) {
+        $("#dvModalContent").html(data);
+        $("#modal").modal("show");
+      });
+    });
+  });
+
+  //edit
+  $(document).on("click", "#btnEditActor", function (e) {
+    e.preventDefault();
+    var formData = $("#frmEditActor").serialize();
+    var url = "ActorManagement/edit";
+    $.post(url, formData, function (op) {
+      if (op.success === true) {
+        $("#modal").modal("hide");
+        alert(op.message);
+        $.get("ActorManagement/search", null, function (data) {
+          $("#grid").html(data);
+        });
+      } else {
+        alert(op.message);
+      }
+    });
+  });
+
+  //delete
+  $(document).on("click", ".delete", function () {
+    var actordId = $(this).attr("id");
+    var url = "ActorManagement/delete";
+    if (confirm("آیا برای حذف بازیگر مطمئن هستید؟")) {
+      $.post(url, { actorId: actordId }, function (op) {
+        if(op.success===true){
+          alert(op.message)
+          $.get('ActorManagement/search',null,function(data){
+            $('#grid').html(data)
+          })
+        }
+        else{
+          alert(op.message)
+        }
+      });
+    }
+  });
+</script>
+
+<!--start form-->
+<div class="page-content-wrapper">
+  <div class="page-content">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-header">
+            <h6 class="mb-0"><%= pageTitle %></h6>
+          </div>
+          <div class="card-body">
+            <form id="frmSearchActor" method="get">
+              <div class="form-group">
+                <label class="from-label" for="actorId">انتخاب بازیگر</label>
+                <select
+                  class="form-control form-selct"
+                  name="actorId"
+                  id="actorId"
+                >
+                  <option value="">...انتخاب کنید...</option>
+                  <% selectActors.map((item)=>{ %>
+                  <option value="<%= item.actorId %>">
+                    <%= item.name %> <%= item.family %>
+                  </option>
+                  <% }) %>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="from-label" for="name">نام</label>
+                <input
+                  class="form-control form-control-lg mb-3"
+                  type="text"
+                  aria-label=".form-control-lg example"
+                  name="name"
+                  id="name"
+                />
+              </div>
+              <div class="form-group">
+                <label class="from-label" for="family">نام خانوادگی</label>
+                <input
+                  class="form-control form-control-lg mb-3"
+                  type="text"
+                  aria-label=".form-control-lg example"
+                  name="family"
+                  id="family"
+                />
+              </div>
+              <div class="form-group">
+                <button class="btn btn-primary" id="btnSearchActor">
+                  <i class="lni lni-search"></i>جستجو
+                </button>
+
+                <span
+                  id="btnCreateModal"
+                  class="btn btn-success"
+                  data-bs-toggle="modal"
+                  data-bs-target="#exampleLargeModal"
+                >
+                  <i class="lni lni-plus"></i>ثبت بازیگر جدید
+                </span>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="grid"><%- include('grid') %></div>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="modal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">ثبت و ویرایش</h5>
+      </div>
+      <div id="dvModalContent" class="modal-body">...</div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,174 @@
+<div class="row justify-content-center">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <h6 class="mb-0">مدیریت فیلم ها</h6>
+      </div>
+      <br />
+      <div class="card-body">
+        <form
+          method="post"
+          enctype="multipart/form-data"
+          action="MovieManagement/create"
+        >
+          <div class="row">
+            <div class="form-group col-6">
+              <label for="movieName">نام فیلم</label>
+              <input
+                class="form-control"
+                type="text"
+                name="movieName"
+                id="movieName"
+              />
+            </div>
+            <div class="form-group col-6">
+              <label for="coverImageAlter">متن جایگزین</label>
+              <input
+                class="form-control"
+                type="text"
+                name="coverImageAlter"
+                id="coverImageAlter"
+              />
+            </div>
+          </div>
+          <br />
+          <div class="row">
+            <div class="form-group col-12">
+              <label for="coverImageUrl">عکس</label>
+              <input
+                class="form-control"
+                type="file"
+                name="coverImageUrl"
+                id="coverImageUrl"
+              />
+            </div>
+          </div>
+          <br />
+          <div class="row">
+            <div class="form-group col-6">
+              <label for="description">توضیحات</label>
+              <textarea
+                class="form-control"
+                name="description"
+                id="description"
+              ></textarea>
+            </div>
+            <div class="form-group col-6">
+              <label for="summary">خلاصه داستان</label>
+              <textarea
+                class="form-control"
+                name="summary"
+                id="summary"
+              ></textarea>
+            </div>
+          </div>
+          <br />
+          <div class="row">
+            <div class="form-group col-3">
+              <label for="time">مدت زمان</label>
+              <input class="form-control" type="text" name="time" id="time" />
+            </div>
+            <div class="form-group col-3">
+              <label for="minAge">مناسب برای سن</label>
+              <input
+                class="form-control"
+                type="number"
+                name="minAge"
+                id="minAge"
+              />
+            </div>
+            <div class="form-group col-3">
+              <label for="yearOfBuilt">سال ساخت</label>
+              <input
+                class="form-control"
+                type="number"
+                name="yearOfBuilt"
+                id="yearOfBuilt"
+              />
+            </div>
+            <div class="form-group col-3">
+              <label for="imdb">imdb</label>
+              <input class="form-control" type="number" name="imdb" id="imdb" />
+            </div>
+          </div>
+          <br />
+          <div class="row">
+            <div class="form-group col-4">
+              <label for="hasSubText">زیرنویس</label>
+              <input
+                class="form-check"
+                type="checkbox"
+                name="hasSubText"
+                id="hasSubText"
+              />
+            </div>
+            <div class="form-group col-4">
+              <label for="genreId">ژانر</label>
+              <select name="genreId" class="form-control form-select" >
+                <option value="">...انتخاب کنید...</option>
+                
+                <% genres.map((item)=>{%>
+                  <option value="<%= item.genreId %>"><%= item.genreName %></option>
+                <%}) %>
+                
+              </select>
+            </div>
+            <div class="form-group col-4">
+              <label for="categoryId">دسته بندی</label>
+              <select name="categoryId" class="form-control form-select">
+                <option value="">...انتخاب کنید...</option>
+                
+                <% categories.map((item)=>{%>
+                  <option value="<%= item.categoryId %>"><%= item.categoryName %></option>
+                <%}) %>
+                
+              </select>
+            </div>
+          </div>
+          <br />
+          <div class="row">
+            <div class="form-group col-4">
+              <label for="musicianId">آهنگساز</label>
+              <select name="musicianId" class="form-control form-select">
+                <option value="">...انتخاب کنید...</option>
+                
+                <% musicians.map((item)=>{%>
+                  <option value="<%= item.musicianId %>"><%= item.name %> <%= item.family %></option>
+                <%}) %>
+                
+              </select>
+            </div>
+            <div class="form-group col-4">
+              <label for="authorId">نویسنده</label>
+              <select name="authorId" class="form-control form-select">
+                <option value="">...انتخاب کنید...</option>
+                
+                <% authors.map((item)=>{%>
+                  <option value="<%= item.authorId %>"><%= item.name %> <%= item.family %></option>
+                <%}) %>
+                
+              </select>
+            </div>
+            <div class="form-group col-4">
+              <label for="directorId">کارگردان</label>
+              <select name="directorId" class="form-control form-select">
+                <option value="">...انتخاب کنید...</option>
+                
+                <% directors.map((item)=>{%>
+                  <option value="<%= item.directorId %>"><%= item.name %> <%= item.family %></option>
+                <%}) %>
+                
+              </select>
+            </div>
+          </div>
+          <br />
+          <div class="row">
+            <div class="col-12">
+              <button type="submit" class="btn btn-success">ثبت</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

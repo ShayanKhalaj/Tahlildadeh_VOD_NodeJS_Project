@@ -1,0 +1,84 @@
+<!--start form-->
+<div class="page-content-wrapper">
+  <div class="page-content">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-header">
+            <h6 class="mb-0">مدیریت ژانرها</h6>
+          </div>
+          <div class="card-body">
+<form id="frmSearchGenre" method="get">
+  <div class="form-group">
+    <label class="from-label" for="genreId">انتخاب ژانر</label>
+    <select
+      class="form-control form-selct"
+      name="genreId"
+      id="genreId"
+    >
+      <option value="">...انتخاب کنید...</option>
+      <% selectGenres.map((item)=>{%>
+        <option value="<%= item.genreId %>"><%= item.genreName %></option>
+      <%}) %>
+    </select>
+  </div>
+  <div class="form-group">
+    <label class="from-label" for="name">نام ژانر</label>
+    <input
+      class="form-control form-control-lg mb-3"
+      type="text"
+      aria-label=".form-control-lg example"
+      name="name"
+      id="name"
+    />
+  </div>
+  <div class="form-group">
+    <button 
+    data-btn-search="true"
+data-get-url="GenreManagement/search"
+data-form-id="frmSearchGenre"
+data-grid-id="grid"
+     class="btn btn-primary" id="btnSearchActor">
+      <i class="lni lni-search"></i>جستجو
+    </button>
+
+    <span
+    data-show-create-modal="true"
+data-get-url="GenreManagement/createModal"
+      id="btnAddModalShow"
+      type="button"
+      class="btn btn-success"
+      data-bs-toggle="modal"
+      data-bs-target="#exampleLargeModal"
+    >
+      <i class="lni lni-plus"></i>ثبت ژانر جدید
+    </span>
+  </div>
+</form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="grid"><%- include('grid') %></div>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  data-modal="true"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">ثبت و ویرایش</h5>
+      </div>
+      <div data-modal-content="true" class="modal-body">...</div>
+    </div>
+  </div>
+</div>

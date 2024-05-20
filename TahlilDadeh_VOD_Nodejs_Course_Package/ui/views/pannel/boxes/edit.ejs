@@ -1,0 +1,28 @@
+<div class="col-12">
+  <form class="form" id="frmEditBox">
+    <input type="hidden" name="boxId" value="<%= box.boxId %>">
+    <div class="form-group">
+      <label for="title" class="from-label">عنوان جعبه</label>
+      <input type="text" class="form-control" name="title" id="title" value="<%= box.title %>" />
+    </div>
+    <br />
+    <div class="form-group">
+      <label for="description" class="from-label">توضیحات</label>
+      <input type="text" class="form-control" name="description" id="description" value="<%= box.description %>" />
+    </div>
+    <br />
+    <div class="form-group">
+      <button
+        data-btn-edit="true"
+        data-post-url="BoxManagement/edit"
+        data-form-id="frmEditBox"
+        data-get-url="BoxManagement/search"
+        data-grid-id="grid"
+        type="submit"
+        class="btn btn-warning"
+      >
+        ویرایش
+      </button>
+    </div>
+  </form>
+</div>

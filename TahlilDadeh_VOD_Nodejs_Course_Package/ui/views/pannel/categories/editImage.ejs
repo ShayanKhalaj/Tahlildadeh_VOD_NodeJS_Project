@@ -1,0 +1,41 @@
+<div class="row justify-content-center">
+    <div class="col-10">
+      <form id="frmEditCategory" method="post" action="CategoryManagement/editImage" enctype="multipart/form-data">
+        <input
+          type="hidden"
+          name="categoryId"
+          value="<%= category.categoryId %>"
+        />
+        <input
+          type="hidden"
+          name="categoryName"
+          value="<%= category.categoryName %>"
+        />
+        <input
+        type="hidden"
+        name="categoryImageAlter"
+        value="<%= category.categoryImageAlter %>"
+      />
+      <input
+      type="hidden"
+      name="description"
+      value="<%= category.description %>"
+    />
+        <div class="form-group">
+          <label for="categoryImageUrl" class="form-label">عکس</label>
+          <input type="file" class="form-control" name="categoryImageUrl" value="<%= category.categoryImageUrl %>"/>
+          <img
+            class="form-control"
+            src="../images/<%= category.categoryImageUrl %>"
+            alt="<%= category.categoryImageAlter %>"
+          />
+        </div>
+
+        <br />
+        <div class="form-group">
+          <button class="btn btn-warning" type="submit" id="btnEditCategory">ویرایش</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  

@@ -1,0 +1,251 @@
+<script>
+
+
+
+</script>
+
+<div class="card">
+  <div class="card-header">
+    <a href="MovieManagement" class="btn btn-outline-info">بازگشت</a>
+  </div>
+  <br />
+  <div class="card-body">
+    <div class="row">
+      <div class="col-md-12">
+        <table class="table table-bordered table-sm table-hover table-striped">
+          <tr>
+            <td>
+              <label>نام فیلم</label>
+            </td>
+            <td>
+              <h5><%= movie.movieName %></h5>
+            </td>
+            <td>
+              <span
+                data-show-edit-movie-modal="true"
+                data-get-url="MovieManagement/editMovieNameModal"
+                data-modal-id="modal"
+                data-modal-content-id="dvModalContent"
+                data-movie-id="<%= movie.movieId %>"
+                class="btn btn-outline-warning"
+              >
+                <i class="bx bx-edit"></i>ویرایش
+              </span>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label>دسته بندی</label>
+            </td>
+            <td>
+              <h5><%= category.categoryName %></h5>
+            </td>
+            <td>
+              <button class="btn btn-outline-warning">
+                <i class="bx bx-edit"></i>ویرایش
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label>نویسنده</label>
+            </td>
+            <td>
+              <h5><%= author.name %> <%= author.family %></h5>
+            </td>
+            <td>
+              <button class="btn btn-outline-warning">
+                <i class="bx bx-edit"></i>ویرایش
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label>کارگردان</label>
+            </td>
+            <td>
+              <h5><%= director.name %> <%= director.family %></h5>
+            </td>
+            <td>
+              <button class="btn btn-outline-warning">
+                <i class="bx bx-edit"></i>ویرایش
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label>آهنگساز</label>
+            </td>
+            <td>
+              <h5><%= musician.name %> <%= musician.family %></h5>
+            </td>
+            <td>
+              <button class="btn btn-outline-warning">
+                <i class="bx bx-edit"></i>ویرایش
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label>ژانر</label>
+            </td>
+            <td>
+              <h5><%= genre.genreName %></h5>
+            </td>
+            <td>
+              <button class="btn btn-outline-warning">
+                <i class="bx bx-edit"></i>ویرایش
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label>توضیحات</label>
+            </td>
+            <td>
+              <h5><%= movie.description %></h5>
+            </td>
+            <td>
+              <button class="btn btn-outline-warning">
+                <i class="bx bx-edit"></i>ویرایش
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label>مدت زمان</label>
+            </td>
+            <td>
+              <h5><%= movie.time %> دقیقه</h5>
+            </td>
+            <td>
+              <button class="btn btn-outline-warning">
+                <i class="bx bx-edit"></i>ویرایش
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label>مناسب برای سن</label>
+            </td>
+            <td>
+              <h5><%= movie.minAge %>+</h5>
+            </td>
+            <td>
+              <button class="btn btn-outline-warning">
+                <i class="bx bx-edit"></i>ویرایش
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label>خلاصه داستان</label>
+            </td>
+            <td>
+              <h5><%= movie.summary %></h5>
+            </td>
+            <td>
+              <button class="btn btn-outline-warning">
+                <i class="bx bx-edit"></i>ویرایش
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label>سال ساخت</label>
+            </td>
+            <td>
+              <h5><%= movie.yearOfBuilt %></h5>
+            </td>
+            <td>
+              <button class="btn btn-outline-warning">
+                <i class="bx bx-edit"></i>ویرایش
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label>امتیاز imdb</label>
+            </td>
+            <td>
+              <h5><%= movie.imdb %></h5>
+            </td>
+            <td>
+              <button class="btn btn-outline-warning">
+                <i class="bx bx-edit"></i>ویرایش
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label>زیرنویس</label>
+            </td>
+            <td>
+      <h5><%= movie.hasSubText===true?'دارد':'ندارد' %></h5>
+            </td>
+            <td>
+              <button class="btn btn-outline-warning">
+                <i class="bx bx-edit"></i>ویرایش
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label>عکس</label>
+            </td>
+            <td>
+              <img
+                src="../images/<%= movie.coverImageUrl %>"
+                width="240"
+                alt="<%= movie.coverImageAlter %>"
+              />
+            </td>
+            <td>
+              <button class="btn btn-outline-warning">
+                <i class="bx bx-edit"></i>ویرایش
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label>متن جایگزین</label>
+            </td>
+            <td>
+              <input
+                class="form-control"
+                disabled
+                value="<%= movie.coverImageAlter %>"
+              />
+            </td>
+            <td>
+              <button class="btn btn-outline-warning">
+                <i class="bx bx-edit"></i>ویرایش
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label>ویدئو</label>
+            </td>
+            <td>
+              <video width="240" controls autoplay="true">
+                <source src="../videos/<%= movie.movieVideoUrl %>" />
+              </video>
+            </td>
+            <td>
+              <button class="btn btn-outline-warning">
+                <i class="bx bx-edit"></i>ویرایش
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <div id="grdActorsDetail">
+              <%#  %>
+<%- include('actorMovieDetails') %>
+            </div>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

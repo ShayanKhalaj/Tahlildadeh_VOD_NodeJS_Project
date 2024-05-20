@@ -1,0 +1,137 @@
+<script>
+  //show details
+$(document).on('click','[data-show-movie-details="true"]',function(){
+  var boxId = $(this).attr('data-id')
+  $.get('BoxManagement/showRelatedMovies',{boxId:boxId},function(data){
+    $('#dvSearchBox').html(data)
+  })
+})
+
+// delete related movie
+$(document).on('click','[data-delete-box-movie="true"]',function(){
+  var movieId=$(this).attr('data-id')
+  var pageId="#" + $(this).attr('page-id')
+  var postUrl=$(this).attr('data-post-url')
+  var getUrl=$(this).attr('data-get-url')
+  var confirmMessage = $(this).attr('data-confirm-message')
+  if(confirm(confirmMessage)){
+    $.post(postUrl,{movieId:movieId},function(op){
+      if(op.success===false){
+        alert(op.message)
+      }
+      else{
+        alert(op.message)
+        $.get(getUrl,null,function(data){
+          $('#grid').html('')
+          $(pageId).html(data)
+        })
+      }
+    })
+  }
+})
+</script>
+
+
+<!--start form-->
+<div  id="dvPageContent">
+<div class="page-content-wrapper">
+    <div class="page-content" >
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <div class="card">
+            <div class="card-header">
+              <h6 class="mb-0">مدیریت جعبه ها</h6>
+            </div>
+            <div class="card-body" id="dvSearchBox">
+              <form id="frmSearchBox">
+                <div class="form-group">
+                  <label class="from-label" for="boxId"
+                    >انتخاب جعبه</label
+                  >
+                  <select
+                    class="form-control form-selct"
+                    name="boxId"
+                    id="boxId"
+                  >
+                    <option value="">...انتخاب کنید...</option>
+                    <% inflateBoxDropDown.map((item)=>{%>
+                      <option value="<%= item.boxId %>"><%= item.title %></option>
+                    <%}) %>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="from-label" for="title">عنوان جعبه</label>
+                  <input
+                    class="form-control form-control-lg mb-3"
+                    type="text"
+                    name="title"
+                    id="title"
+                  />
+                </div>
+                <div class="form-group">
+                  <label class="from-label" for="description">توضیحات</label>
+                  <input
+                    class="form-control form-control-lg mb-3"
+                    type="text"
+                    name="description"
+                    id="description"
+                  />
+                </div>
+                <div class="form-group">
+                  <button
+                  data-btn-search="true"
+                  data-get-url="BoxManagement/search"
+                  data-form-id="frmSearchBox"
+                  data-grid-id="grid"
+                  class="btn btn-primary"
+                >
+                  <i class="lni lni-search"></i>جستجو
+                </button>
+  
+                  <span
+                  data-show-create-modal="true"
+                  data-get-url="BoxManagement/createModal"
+                    type="button"
+                    class="btn btn-success"
+                    data-bs-toggle="modal"
+                    data-bs-target="#exampleLargeModal"
+                  >
+                    <i class="lni lni-plus"></i>ثبت جعبه جدید
+                  </span>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="grid"><%- include('grid') %></div>
+</div>
+
+  <!-- Modal -->
+<div
+id="modal"
+class="modal fade modal-lg"
+data-modal="true"
+tabindex="-1"
+role="dialog"
+aria-labelledby="exampleModalLabel"
+aria-hidden="true"
+>
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">ثبت و ویرایش</h5>
+    </div>
+    <div data-modal-content="true" id="dvModalContent" class="modal-body">
+      ...
+    </div>
+  </div>
+</div>
+</div>
+
+
+  
+
+  

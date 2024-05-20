@@ -1,0 +1,62 @@
+
+<!-- Box contents -->
+<% boxes.map((x)=>{%>
+<div class="main-content">
+    <section id="iq-favorites">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12 overflow-hidden">
+              
+            <div
+              class="iq-main-header d-flex align-items-center justify-content-between"
+            >
+            <h4 class="main-title"><%= x.title %></h4>
+            <a class="iq-view-all" href="movie-category.html">مشاهده همه</a>
+        </div>
+        <div class="favorites-contens">
+
+          <ul
+          class="favorites-slider list-inline row p-0 mb-0 iq-rtl-direction"
+          >
+          <% x.boxMovies.map((y)=>{%>
+              <% y.movies.map((z)=>{%>
+                    <li class="slide-item">
+                      <a href="/movie/<%= z.movieId %>" class="link">
+                        <div
+                          class="card bg-dark text-white"
+                          style="
+                            border: none;
+                            box-shadow: 2px 2px 0 2px rgba(220, 117, 138, 0.105);
+                          "
+                        >
+                          <img
+                            src="../images/<%= z.coverImageUrl %>"
+                            class="card-img"
+                            alt="..."
+                            style="height: 15em; width: 100%"
+                          />
+                          <div
+                            class="card-img-overlay"
+                            style="background-color: rgba(0, 0, 0, 0.35)"
+                          >
+                            <h5 class="card-title"><%= z.movieName %></h5>
+                            <p class="card-text">imdb : <%= z.imdb %></p>
+                            <p class="card-text"><%= z.hasSubText===true?'زیرنویس دارد':'زیر نویس ندارد' %></p>
+                          </div>
+                        </div>
+                      </a>
+                    </li>
+                    <%}) %>
+                    <%}) %>
+                  </ul>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+            <%}) %>
+
+  

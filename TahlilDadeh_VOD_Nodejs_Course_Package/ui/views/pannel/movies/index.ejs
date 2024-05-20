@@ -1,0 +1,305 @@
+
+<script>
+
+  //delete 
+  $(document).on('click','[data-delete-movie="true"]',function(){
+    var postUrl = $(this).attr('data-post-url')
+    var getUrl = $(this).attr('data-get-url')
+    var movieId = $(this).attr('data-id')
+    var confirmMessage = $(this).attr('data-confirm-message')
+    var gridId ="#" +  $(this).attr('data-grid-id')
+    if(confirm(confirmMessage)){
+      console.log(movieId)
+      $.post(postUrl,{movieId:movieId},function(op){
+        if(op.success===true){
+          alert(op.message)
+          $.get(getUrl,null,function(data){
+            $(gridId).html(data)
+          })
+        }
+        else{
+          alert(op.message)
+        }
+      })
+    }
+  })
+
+  //show details
+  $(document).on('click','[data-show-details="true"]',function(){
+    var movieId = $(this).attr('data-id')
+    $.get('MovieManagement/showDetails',{movieId:movieId},function(data){
+      $('#dvSearchBox').html(data)
+    })
+  })
+
+  //edit movie modal
+$(document).on('click','[data-show-edit-movie-modal="true"]',function(){
+  var getUrl=$(this).attr('data-get-url')
+  var movieId=$(this).attr('data-movie-id')
+  var modalId = "#" + $(this).attr('data-modal-id')
+  var dvModalContent= "#" +  $(this).attr('data-modal-content-id')
+  $.get(getUrl,{movieId:movieId},function(data){
+    $(dvModalContent).html(data)
+    $(modalId).modal('show')
+  })
+
+})
+
+//edit movie name
+$(document).on('click','[data-edit-movie-name="true"]',function(e){
+  e.preventDefault()
+  var postUrl = $(this).attr('data-post-url')
+  var getUrl = $(this).attr('data-get-url')
+  var formId = "#"+$(this).attr('data-form-id')
+  var formData = $(formId).serialize()
+  var pageId = "#"+$(this).attr('data-page-id')
+  var movieId = $(this).attr('data-movie-id')
+  var modalId ="#"+ $(this).attr('data-modal-id')
+  var gridId = "#" + $(this).attr('data-grid-id')
+  var searchUrl = $(this).attr('data-search-url')
+  $.post(postUrl,formData,function(op){
+    if(op.success===true){
+      alert(op.message)
+      $.get(getUrl,{movieId:movieId},function(data){
+        $(pageId).html(data)
+        $(modalId).modal('hide')
+        $.get(searchUrl,null,function(result){
+          $(gridId).html(result)
+        })
+      })
+    }
+    else{
+      alert(op.message)
+    }
+  })
+})
+
+
+// delete related actor
+$(document).on('click','[data-delete-actor="true"]',function(){
+  var actorId=$(this).attr('data-id')
+  var gridId="#" + $(this).attr('grid-id')
+  var postUrl=$(this).attr('data-post-url')
+  var getUrl=$(this).attr('data-get-url')
+  var confirmMessage = $(this).attr('data-confirm-message')
+  if(confirm(confirmMessage)){
+    $.post(postUrl,{actorId:actorId},function(op){
+      if(op.success===false){
+        alert(op.message)
+      }
+      else{
+        alert(op.message)
+        $.get(getUrl,null,function(data){
+          $('#grid').html('')
+          $(gridId).html(data)
+        })
+      }
+    })
+  }
+})
+  
+  </script>
+
+<!--start form-->
+<div id="dvPageContent">
+  <div class="page-content-wrapper">
+    <div class="page-content">
+      <div class="row justify-content-center">
+        <div class="col-md-8" id="dvSearchBox">
+          <div class="card">
+            <div class="card-header">
+              <h6 class="mb-0">مدیریت فیلم ها</h6>
+            </div>
+            <br />
+            <div class="card-body">
+              <form id="frmSearchMovie" method="get">
+                <div class="form-group">
+                  <label class="from-label" for="movieId">انتخاب فیلم</label>
+                  <select
+                    class="form-control form-selct"
+                    name="movieId"
+                    id="movieId"
+                  >
+                    <option value="">...انتخاب کنید...</option>
+                    <% movies.map((item)=>{%>
+                      <option value="<%= item.movieId %>"><%= item.movieName %></option>
+                    <%}) %>
+                    
+                  </select>
+                </div>
+                <br />
+                <div class="form-group">
+                  <label class="from-label" for="movieName">نام فیلم</label>
+                  <input
+                    class="form-control form-control-lg mb-3"
+                    type="text"
+                    aria-label=".form-control-lg example"
+                    id="movieName"
+                    name="movieName"
+                  />
+                </div>
+                <br />
+                <div class="form-group">
+                  <label class="from-label" for="minAge">مناسب برای سن</label>
+                  <input
+                    class="form-control form-control-lg mb-3"
+                    type="number"
+                    max="10"
+                    aria-label=".form-control-lg example"
+                    id="minAge"
+                    name="minAge"
+                  />
+                </div>
+                <br />
+                <div class="form-group">
+                  <label class="from-label" for="imdb">امتیاز IMDB</label>
+                  <input
+                    class="form-control form-control-lg mb-3"
+                    type="number"
+                    max="10"
+                    aria-label=".form-control-lg example"
+                    id="imdb"
+                    name="imdb"
+                  />
+                </div>
+                <br />
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="from-label" for="categoryId"
+                        >انتخاب دسته بندی</label
+                      >
+                      <select
+                        class="form-control form-selct"
+                        name="categoryId"
+                        id="categoryId"
+                      >
+                        <option value="">...انتخاب کنید...</option>
+                        <% categories.map((item)=>{%>
+                          <option value="<%= item.categoryId %>"><%= item.categoryName %></option>
+                        <%}) %>
+                        
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label class="from-label" for="genreId"
+                        >انتخاب ژانر</label
+                      >
+                      <select
+                        class="form-control form-selct"
+                        name="genreId"
+                        id="genreId"
+                      >
+                        <option value="">...انتخاب کنید...</option>
+                        
+                        <% genres.map((item)=>{%>
+                          <option value="<%= item.genreId %>"><%= item.genreName %></option>
+                        <%}) %>
+                        
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="from-label" for="musicianId"
+                        >انتخاب آهنگساز</label
+                      >
+                      <select
+                        class="form-control form-selct"
+                        name="musicianId"
+                        id="musicianId"
+                      >
+                        <option value="">...انتخاب کنید...</option>
+                        
+                        <% musicians.map((item)=>{%>
+                          <option value="<%= item.musicianId %>"><%= item.name %> <%= item.family %></option>
+                        <%}) %>
+                        
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label class="from-label" for="authorId"
+                        >انتخاب نویسنده</label
+                      >
+                      <select
+                        class="form-control form-selct"
+                        name="authorId"
+                        id="authorId"
+                      >
+                        <option value="">...انتخاب کنید...</option>
+                        
+                        
+                        <% authors.map((item)=>{%>
+                          <option value="<%= item.authorId %>"><%= item.name %> <%= item.family %></option>
+                        <%}) %>
+                        
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <br />
+                <div class="form-group">
+                  <label class="from-label" for="hasSubText"> زیرنویس : </label>
+                  <input
+                    type="checkbox"
+                    name="hasSubText"
+                    id="hasSubText"
+                    class="form-check"
+                  />
+                </div>
+                <br />
+                <div class="form-group">
+                  <button
+                    data-btn-search="true"
+                    data-get-url="MovieManagement/search"
+                    data-form-id="frmSearchMovie"
+                    data-grid-id="grid"
+                    class="btn btn-primary"
+                  >
+                    <i class="lni lni-search"></i>جستجو
+                  </button>
+
+                  <span
+                    data-show-create-modal="true"
+                    data-get-url="MovieManagement/createModal"
+                    type="button"
+                    class="btn btn-success"
+                    data-bs-toggle="modal"
+                    data-bs-target="#exampleLargeModal"
+                  >
+                    <i class="lni lni-plus"></i>ثبت فیلم جدید
+                  </span>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="grid"><%- include('grid') %></div>
+
+<!-- Modal -->
+<div
+  id="modal"
+  class="modal fade modal-lg"
+  data-modal="true"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">ثبت و ویرایش</h5>
+      </div>
+      <div data-modal-content="true" id="dvModalContent" class="modal-body">
+        ...
+      </div>
+    </div>
+  </div>
+</div>

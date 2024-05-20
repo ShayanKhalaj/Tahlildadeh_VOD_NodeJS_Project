@@ -1,0 +1,48 @@
+<div class="col-12">
+  <form id="frmEditDirector" method="get">
+    <input type="hidden" name="directorId" value="<%= director.directorId %>" />
+    <br />
+    <div class="form-group">
+      <label for="name" class="from-label">نام</label>
+      <input
+        type="text"
+        class="form-control"
+        name="name"
+        id="name"
+        value="<%= director.name %>"
+      />
+    </div>
+    <br />
+    <div class="form-group">
+      <label for="family" class="from-label">نام خانوادگی</label>
+      <input
+        type="text"
+        class="form-control"
+        name="family"
+        id="family"
+        value="<%= director.family %>"
+      />
+    </div>
+    <br />
+    <div class="form-group">
+      <label for="nation" class="from-label">ملیت</label>
+      <input
+        type="text"
+        class="form-control"
+        name="nation"
+        id="nation"
+        value="<%= director.nation %>"
+      />
+    </div>
+    <br />
+    <div class="form-group">
+      <button data-btn-edit="true" 
+      data-post-url="DirectorManagement/edit"
+      data-get-url="DirectorManagement/search"
+      data-form-id="frmEditDirector"
+      data-grid-id="grid" type="submit" class="btn btn-warning">
+        ویرایش
+      </button>
+    </div>
+  </form>
+</div>

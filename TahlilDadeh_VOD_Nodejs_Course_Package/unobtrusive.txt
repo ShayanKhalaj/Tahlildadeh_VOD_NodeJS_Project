@@ -1,0 +1,51 @@
+// unobtrusive library
+
+// search
+
+data-btn-search="true"
+data-get-url
+data-form-id
+data-grid-id
+
+// show create modal
+
+data-show-create-modal="true"
+data-get-url
+data-modal-content="true"
+data-modal="true"
+
+// create
+
+data-btn-create="true"
+data-post-url
+data-get-url
+data-form-id
+data-grid-id
+data-modal="true"
+
+// show edit modal
+
+data-show-edit-modal="true"
+data-get-url
+data-id
+data-modal-content="true"
+data-modal="true"
+
+// edit
+
+data-btn-edit="true"
+data-post-url
+data-form-id
+data-get-url
+data-grid-id
+data-modal="true"
+
+//delete
+
+data-delete="true"
+data-post-url
+data-id
+data-get-url
+data-grid-id
+data-confirm-message
+

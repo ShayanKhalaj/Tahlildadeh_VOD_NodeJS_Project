@@ -1,0 +1,18 @@
+/*------------- Variable ------------*/
+
+:root {
+  --iq-primary: #83bbef;
+  --iq-primary-hover: #3e9eff9c;
+  --iq-light-primary: #a29eca;
+  --iq-secondary: #d3dae0;
+  --iq-white: #ebdddd;
+  --iq-black: #000000;
+  --iq-title-text: #23203c;
+  --iq-body-text: #dceef3;
+  --iq-body-bg: #050609;
+  --iq-bg1: #03020396;
+  --iq-body-border: rgb(11, 17, 32);
+  --iq-gold: #e69c5f;
+  --iq-black: #000000dd;
+  --iq-form-gradient-color: rgba(12, 12, 13, 0.607);
+  --iq-to-gradient-color: #2484debc;}

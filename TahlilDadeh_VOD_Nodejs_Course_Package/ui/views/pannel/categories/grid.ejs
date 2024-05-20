@@ -1,0 +1,81 @@
+<div class="page-content-wrapper">
+  <!-- start page content-->
+  <div class="page-content">
+    <div class="row">
+      <div class="col-xl-12 mx-auto">
+        <h6 class="mb-0 text-uppercase">دسته بندی ها</h6>
+        <hr />
+        <div class="card">
+          <div class="card-body">
+            <table class="table mb-0 table-dark table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">ردیف</th>
+                  <th scope="col">نام دسته بندی</th>
+                  <th scope="col">توضیحات</th>
+                  <th scope="col">عکس</th>
+                  <th scope="col"></th>
+                  <th scope="col"></th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <% searchResults.map((item,index)=>{%>
+                <tr>
+                  <td><%= index+1 %></td>
+                  <td><%= item.categoryName %></td>
+                  <td><%= item.description %></td>
+                  <td>
+                    <img
+                      width="75"
+                      src="../images/<%= item.categoryImageUrl %>"
+                      alt="<%= item.categoryImageAlter %>"
+                    />
+                  </td>
+
+                  <td>
+                    <span
+                      data-show-edit-modal="true"
+                      data-get-url="CategoryManagement/editModal"
+                      data-id="<%= item.categoryId %>"
+                      class="btn btn-warning"
+                    >
+                      <i class="bx bx-edit"></i>ویرایش
+                    </span>
+                  </td>
+                  <td>
+                    <span
+                      data-show-edit-modal="true"
+                      data-get-url="CategoryManagement/editImageModal"
+                      data-id="<%= item.categoryId %>"
+                      class="btn btn-outline-warning"
+                    >
+                      <i class="bx bx-edit"></i>ویرایش عکس
+                    </span>
+                  </td>
+                  <td>
+                    <span
+                      data-delete="true"
+                      data-post-url="CategoryManagement/delete"
+                      data-id="<%= item.categoryId %>"
+                      data-get-url="CategoryManagement/search"
+                      data-grid-id="grid"
+                      data-confirm-message="آیا برای حذف دسته بندی مطمئن هستید؟"
+                      class="btn btn-danger"
+                      id="btnDelete"
+                    >
+                      <i class="bx bx-x"></i>حذف
+                    </span>
+                  </td>
+                </tr>
+                <%}) %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- end page content-->
+</div>

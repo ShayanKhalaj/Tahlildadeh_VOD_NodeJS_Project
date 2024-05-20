@@ -1,0 +1,37 @@
+<div class="col-12">
+  <div id="dvErrorAlert" role="alert"></div>
+  <form id="frmCreateGenre" method="post">
+    <div class="form-group">
+      <label for="genreName" class="from-label">نام ژانر</label>
+      <input type="text" class="form-control" name="genreName" id="genreName" />
+      <span id="genreNameError" class="text-danger"></span>
+    </div>
+    <br />
+    <div class="form-group">
+      <label for="description" class="from-label">توضیحات</label>
+      <textarea
+        class="form-control"
+        name="description"
+        id="description"
+        cols="30"
+        rows="10"
+      ></textarea>
+      <span id="descriptionError" class="text-danger"></span>
+    </div>
+    <br />
+    <div class="form-group">
+      <button
+        data-btn-create="true"
+        data-post-url="GenreManagement/create"
+        data-get-url="GenreManagement/search"
+        data-form-id="frmCreateGenre"
+        data-grid-id="grid"
+        data-alert-id="dvErrorAlert"
+        type="submit"
+        class="btn btn-success"
+      >
+        ثبت
+      </button>
+    </div>
+  </form>
+</div>

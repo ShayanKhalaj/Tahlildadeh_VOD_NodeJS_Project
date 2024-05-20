@@ -1,0 +1,50 @@
+<!-- start grid-->
+<div class="page-content-wrapper">
+  <!-- start page content-->
+  <div class="page-content">
+    <div class="row">
+      <div class="col-xl-12 mx-auto">
+        <h6 class="mb-0 text-uppercase">نویسندگان</h6>
+        <hr />
+        <div class="card">
+          <div class="card-body">
+            <table class="table mb-0 table-dark table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">ردیف</th>
+                  <th scope="col">نام</th>
+                  <th scope="col">نام خانوادگی</th>
+                  <th scope="col">ملیت</th>
+                  <th scope="col"></th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <% authorResults.map((item,index)=>{%>
+                  <tr>
+                    <td><%= index+1 %></td>
+                    <td><%= item.name %></td>
+                    <td><%= item.family %></td>
+                    <td><%= item.nation %></td>
+                    <td>
+                      <span id="<%= item.authorId %>" class="btn btn-warning edit">
+                        <i class="bx bx-edit"></i>ویرایش
+                      </span>
+                    </td>
+                    <td>
+                      <span class="btn btn-danger delete" id="<%= item.authorId %>">
+                        <i class="bx bx-x"></i>حذف
+                      </span>
+                    </td>
+                  </tr>
+                <%}) %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- end page content-->
+</div>

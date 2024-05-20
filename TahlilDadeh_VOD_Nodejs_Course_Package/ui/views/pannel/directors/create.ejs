@@ -1,0 +1,32 @@
+<div class="col-12">
+  <form id="frmCreate" method="post">
+    <div class="form-group">
+      <label for="name" class="from-label">نام</label>
+      <input type="text" class="form-control" name="name" id="name" />
+    </div>
+    <br />
+    <div class="form-group">
+      <label for="family" class="from-label">نام خانوادگی</label>
+      <input type="text" class="form-control" name="family" id="family" />
+    </div>
+    <br />
+    <div class="form-group">
+      <label for="nation" class="from-label">ملیت</label>
+      <input type="text" class="form-control" name="nation" id="nation" />
+    </div>
+    <br />
+    <div class="form-group">
+      <button
+        data-btn-create="true"
+        data-post-url="DirectorManagement/create"
+        data-form-id="frmCreate"
+        data-get-url="DirectorManagement/search"
+        data-grid-id="grid"
+        type="submit"
+        class="btn btn-success"
+      >
+        ثبت
+      </button>
+    </div>
+  </form>
+</div>

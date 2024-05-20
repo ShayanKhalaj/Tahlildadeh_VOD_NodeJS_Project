@@ -1,0 +1,29 @@
+<div class="col-12">
+  <div id="dvAlertError" role="alert"></div>
+  <form class="form" id="frmCreateBox" method="post">
+    <div class="form-group">
+      <label for="title" class="from-label">عنوان جعبه</label>
+      <input type="text" class="form-control" name="title" id="title" />
+    </div>
+    <br />
+    <div class="form-group">
+      <label for="description" class="from-label">توضیحات</label>
+      <input type="text" class="form-control" name="description" id="description" />
+    </div>
+    <br />
+    <div class="form-group">
+      <button
+        data-btn-create="true"
+        data-post-url="BoxManagement/create"
+        data-get-url="BoxManagement/search"
+        data-form-id="frmCreateBox"
+        data-grid-id="grid"
+        type="submit"
+        class="btn btn-success"
+      >
+        ثبت
+      </button>
+    </div>
+  </form>
+</div>
+

@@ -1,0 +1,57 @@
+<div class="col-12">
+  <form id="frmEditMusician" method="post">
+    <input
+      type="hidden"
+      method="post"
+      name="musicianId"
+      value="<%= musician.musicianId %>"
+    />
+    <br />
+    <div class="form-group">
+      <label for="name" class="from-label">نام</label>
+      <input
+        type="text"
+        class="form-control"
+        name="name"
+        id="name"
+        value="<%= musician.name %>"
+      />
+    </div>
+    <br />
+    <div class="form-group">
+      <label for="family" class="from-label">نام خانوادگی</label>
+      <input
+        type="text"
+        class="form-control"
+        name="family"
+        id="family"
+        value="<%= musician.family %>"
+      />
+    </div>
+    <br />
+    <div class="form-group">
+      <label for="nation" class="from-label">ملیت</label>
+      <input
+        type="text"
+        class="form-control"
+        name="nation"
+        id="nation"
+        value="<%= musician.nation %>"
+      />
+    </div>
+    <br />
+    <div class="form-group">
+      <button
+        data-btn-edit="true"
+        data-post-url="MusicianManagement/edit"
+        data-form-id="frmEditMusician"
+        data-get-url="MusicianManagement/search"
+        data-grid-id="grid"
+        type="submit"
+        class="btn btn-warning"
+      >
+        ویرایش
+      </button>
+    </div>
+  </form>
+</div>

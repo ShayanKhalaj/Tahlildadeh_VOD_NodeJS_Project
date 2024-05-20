@@ -1,0 +1,57 @@
+<!--start form-->
+<div class="page-content-wrapper">
+  <div class="page-content">
+    <div class="row justify-content-center">
+      <div class="col-md-12">
+        <table class="table table-bordered table-hover table-striped table-sm">
+          <tr>
+            <th>ردیف</th>
+            <th>متن</th>
+            <th>پاسخ</th>
+            <th>تاییدیه</th>
+            <th></th>
+          </tr>
+          <% comments.map((item,index)=>{%>
+            <tr>
+              <td><%= index+1 %></td>
+              <td><textarea disabled="true" class="form-control"><%= item.text %></textarea></td>
+              <td><textarea disabled="true" class="form-control bg-dark text-light"><%= item.answer %></textarea></td>
+              <td class="text-success"><%= item.isAccepted?'ok':'' %></td>
+              <td>
+                <span
+                  data-show-edit-modal="true"
+                  data-get-url="CommentManagement/getAnswerModal"
+                  data-id="<%= item.commentId %>"
+                  class="btn btn-warning"
+                >
+                  <i class="bx bx-edit"></i>ثبت پاسخ
+                </span>
+              </td>
+            </tr>
+          <%}) %>
+
+          
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  data-modal="true"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">ثبت و ویرایش</h5>
+      </div>
+      <div data-modal-content="true" class="modal-body">...</div>
+    </div>
+  </div>
+</div>

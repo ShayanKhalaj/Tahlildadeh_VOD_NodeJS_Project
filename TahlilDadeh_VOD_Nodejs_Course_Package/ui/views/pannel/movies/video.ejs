@@ -1,0 +1,41 @@
+<div class="row justify-content-center">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <h6 class="mb-0">مدیریت فیلم ها</h6>
+      </div>
+      <br />
+      <div class="card-body">
+        <form
+          method="post"
+          enctype="multipart/form-data"
+          action="MovieManagement/createVideo"
+        ><input type="hidden" name="movieId" id="movieId" value="<%= movie.movieId %>" />
+        <input type="hidden" name="movieName" id="movieName" value="<%= movie.movieName %>" />
+        <input type="hidden" name="coverImageAlter" id="coverImageAlter" value="<%= movie.coverImageAlter %>" />
+        <input type="hidden" name="coverImageUrl" id="coverImageUrl" value="<%= movie.coverImageUrl %>" />
+        <input type="hidden" name="description" id="description" value="<%= movie.description %>" />
+        <input type="hidden" name="summary" id="summary" value="<%= movie.summary %>" />
+        <input type="hidden" name="time" id="time" value="<%= movie.time %>" />
+        <input type="hidden" name="minAge" id="minAge" value="<%= movie.minAge %>" />
+        <input type="hidden" name="yearOfBuilt" id="yearOfBuilt" value="<%= movie.yearOfBuilt %>" />
+        <input type="hidden" name="imdb" id="imdb" value="<%= movie.imdb %>" />
+        <input type="hidden" name="hasSubText" id="hasSubText" value="<%= movie.hasSubText %>" />
+        <input type="hidden" name="genreId" id="genreId" value="<%= movie.genreId %>" />
+        <input type="hidden" name="categoryId" id="categoryId" value="<%= movie.categoryId %>" />
+        <input type="hidden" name="authorId" id="authorId" value="<%= movie.authorId %>" />
+        <input type="hidden" name="directorId" id="directorId" value="<%= movie.directorId %>" />
+        <input type="hidden" name="musicianId" id="musicianId" value="<%= movie.musicianId %>" />
+        <div class="form-group">
+            <label for="movieVideoUrl">ویدئو</label>
+            <input type="file" name="movieVideoUrl" id="movieVideoUrl" />
+        </div>
+        <br/>
+        <div class="form-group">
+            <button class="btn btn-outline-success">ثبت ویدئو</button>
+        </div>
+    </form>
+      </div>
+    </div>
+  </div>
+</div>

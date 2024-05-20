@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="en-US">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title><%= pageTitle %></title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="../dist/website/theme/images/favicon.ico" />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../dist/website/theme/css/bootstrap.min.css" />
+    <!-- Typography CSS -->
+    <link rel="stylesheet" href="../dist/website/theme/css/typography.css" />
+    <!-- Style -->
+    <link rel="stylesheet" href="../dist/website/theme/css/style.css" />
+    <!-- Responsive -->
+    <link rel="stylesheet" href="../dist/website/theme/css/responsive.css" />
+    <!-- scroll -->
+    <link rel="stylesheet" href="./../dist/website/theme/css/scroll.css" />
+    <!-- jQuery, Popper JS -->
+    <script src="../dist/website/theme/js/jquery-3.4.1.min.js"></script>
+    <script src="../dist/website/theme/js/popper.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="../dist/website/theme/js/bootstrap.min.js"></script>
+    <!-- Slick JS -->
+    <script src="../dist/website/theme/js/slick.min.js"></script>
+    <!-- owl carousel Js -->
+    <script src="../dist/website/theme/js/owl.carousel.min.js"></script>
+    <!-- select2 Js -->
+    <script src="../dist/website/theme/js/select2.min.js"></script>
+    <!-- Magnific Popup-->
+    <script src="../dist/website/theme/js/jquery.magnific-popup.min.js"></script>
+    <!-- Slick Animation-->
+    <script src="../dist/website/theme/js/slick-animation.min.js"></script>
+    <!-- Custom JS-->
+    <script src="../dist/website/theme/js/custom.js"></script>
+  </head>
+  <body>
+    <!-- loader Start -->
+    <div id="loading">
+      <div id="loading-center"></div>
+    </div>
+    <!-- loader END -->
+
+    <%- include('./partials/websiteHeader') %>
+    <div id="root"><%- include(`${template}`) %></div>
+    <%- include('./partials/websiteFooter') %>
+
+    <!-- MainContent End-->
+    <!-- back-to-top -->
+    <div id="back-to-top">
+      <a class="top" href="#top" id="top"> <i class="fa fa-angle-up"></i> </a>
+    </div>
+    <!-- back-to-top End -->
+  </body>
+</html>

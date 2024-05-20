@@ -1,0 +1,58 @@
+<div class="row justify-content-center">
+  <div class="col-10">
+    <div id="createError"></div>
+    <form id="frmCreateCategory" method="post" action="CategoryManagement/create" enctype="multipart/form-data">
+      <div class="form-group">
+        <label for="categoryName" class="form-label">نام دسته بندی</label>
+        <input
+          type="text"
+          class="form-control"
+          name="categoryName"
+          id="categoryName"
+          value=""
+        />
+
+      </div>
+      <div class="form-group">
+        <label for="description" class="form-label">توضیحات</label>
+        <textarea
+          type="text"
+          class="form-control"
+          name="description"
+          id="description"
+          value=""
+        ></textarea>
+        <span id="descriptionError" class="text-danger"></span>
+      </div>
+      <div class="form-group">
+        <label for="categoryImageUrl" class="form-label">عکس</label>
+        <input
+          type="file"
+          class="form-control"
+          name="categoryImageUrl"
+          id="categoryImageUrl"
+          for="categoryImageUrl"
+        />
+        <span id="categoryImageUrlError" class="text-danger"></span>
+      </div>
+      <div class="form-group">
+        <label for="categoryImageAlter" class="form-label">متن جایگزین</label>
+        <textarea
+          type="text"
+          class="form-control"
+          name="categoryImageAlter"
+          id="categoryImageAlter"
+          value=""
+        ></textarea>
+        <span id="categoryImageAlterError" class="text-danger"></span>
+      </div>
+      <br />
+      <div class="form-group">
+
+        <button type="submit" class="btn btn-success" id="btnCreateCategory">
+          ثبت
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

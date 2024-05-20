@@ -1,0 +1,68 @@
+<script>
+  $(document).ready(function () {
+    $("#addAll").click(function () {
+      $("#sourceSelect option").appendTo("#targetSelect");
+    });
+
+    $("#addSelected").click(function () {
+      $("#sourceSelect option:selected").appendTo("#targetSelect");
+    });
+
+    $("#removeSelected").click(function () {
+      $("#targetSelect option:selected").remove();
+    });
+
+    $("#removeAll").click(function () {
+      $("#targetSelect option").remove();
+    });
+
+    $("#retrieveData").click(function () {
+      var actors = $("#targetSelect option")
+        .map(function () {
+          return $(this).val();
+        })
+        .get();
+        var movieId = $(this).attr('data-movie-id')
+        $.post('MovieManagement/createActorMovie',{actors:actors,movieId:movieId},function(op){
+          alert(op.message)
+        })
+    });
+  });
+</script>
+
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-md-5">
+      <select id="sourceSelect" class="form-control">
+        <% actors.map((item)=>{%>
+        <option value="<%= item.actorId%>">
+          <%=item.name%> <%=item.family%>
+        </option>
+        <%}) %>
+      </select>
+    </div>
+    <div class="col-md-2 d-flex flex-column justify-content-around">
+      <button id="addSelected" class="btn btn-success mb-2">
+        افزودن انتخابی
+      </button>
+      <button id="addAll" class="btn btn-outline-success mb-2">
+        افزودن همه
+      </button>
+      <button id="removeSelected" class="btn btn-danger mb-2">
+        حذف انتخابی
+      </button>
+      <button id="removeAll" class="btn btn-outline-danger mb-2">
+        حذف همه
+      </button>
+    </div>
+    <div class="col-md-5">
+      <select id="targetSelect" multiple class="form-control form-control-lg">
+        <!-- Options will be transferred here -->
+      </select>
+      <br />
+      <button data-movie-id="<%= movieId %>" id="retrieveData" class="btn btn-info">
+        ثبت بازیگران
+      </button>
+    </div>
+  </div>
+</div>

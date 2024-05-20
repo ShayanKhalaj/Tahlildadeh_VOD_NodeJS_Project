@@ -1,0 +1,47 @@
+<div class="col-12">
+  <div id="dvAlertError"></div>
+  <form id="frmEditGenre" method="post">
+    <input type="hidden" name="genreId" value="<%= genre.genreId %>" />
+    <br />
+    <div class="form-group">
+      <label for="genreName" class="from-label">نام ژانر</label>
+      <input
+        type="text"
+        class="form-control"
+        name="genreName"
+        id="genreName"
+        value="<%= genre.genreName %>"
+      />
+      <span id="genreNameError" class="text-danger"></span>
+    </div>
+    <br />
+    <div class="form-group">
+      <label for="description" class="from-label">توضیحات</label>
+      <textarea
+        class="form-control"
+        name="description"
+        id="description"
+        cols="30"
+        rows="10"
+      >
+        <%= genre.description %>
+      </textarea>
+      <span id="descriptionError" class="text-danger"></span>
+    </div>
+    <br />
+    <div class="form-group">
+      <button
+        data-btn-edit="true"
+        data-post-url="GenreManagement/edit"
+        data-form-id="frmEditGenre"
+        data-get-url="GenreManagement/search"
+        data-grid-id="grid"
+        data-alert-id="dvAlertError"
+        type="submit"
+        class="btn btn-warning"
+      >
+        ویرایش
+      </button>
+    </div>
+  </form>
+</div>

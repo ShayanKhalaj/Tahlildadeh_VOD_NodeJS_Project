@@ -1,0 +1,183 @@
+<!-- Slider Start -->
+<section id="home" class="iq-main-slider p-0 iq-rtl-direction">
+  <div id="home-slider" class="slider m-0 p-0">
+
+    <% movies.map((x)=>{%>
+      <div class="slide slick-bg">
+        <img
+          src="../images/<%= x.coverImageUrl %>"
+          style="position: absolute; z-index: -1; top: 0;opacity: 0.5; width: 100%;"
+        />
+        <div class="container-fluid position-relative h-100">
+          <div class="slider-inner h-100">
+            <div class="row align-items-center iq-ltr-direction h-100">
+              <div class="col-xl-6 col-lg-12 col-md-12">
+                <h1
+                  class="slider-text big-title title text-uppercase"
+                  data-animation-in="fadeInLeft"
+                  data-delay-in="0.6"
+                >
+                  <%= x.movieName %>
+                </h1>
+  
+                <div
+                  class="d-flex flex-wrap align-items-center fadeInLeft animated"
+                  data-animation-in="fadeInLeft"
+                  style="opacity: 1"
+                >
+                  <div
+                    class="slider-ratting d-flex align-items-center mr-4 mt-2 mt-md-3"
+                  >
+                    <span class="text-white ml-2 h5 text-warning">imdb rate : <%= x.imdb %></span>
+                  </div>
+                  <div class="d-flex align-items-center mt-2 mt-md-3">
+                    <span class="badge badge-secondary p-2"><%= x.minAge %>+</span>
+                  </div>
+                </div>
+                <p data-animation-in="fadeInUp" data-delay-in="1.2">
+                  <%= x.summary %>
+                </p>
+                <div
+                  class="trending-list"
+                  data-wp_object-in="fadeInUp"
+                  data-delay-in="1.2"
+                >
+                  <div class="text-primary title starring">
+                    بازیگران:
+                    <% x.actorMovies.map((y)=>{%>
+                      <span class="text-body">
+                        <% y.actors.map((z)=>{%>
+                          <%= z.name %> <%= z.family %> , 
+                        <%}) %>
+                      </span>
+                    <%}) %>
+                  </div>
+                </div>
+                <div
+                  class="d-flex align-items-center r-mb-23"
+                  data-animation-in="fadeInUp"
+                  data-delay-in="1.2"
+                >
+                  <a href="/movie/<%= x.movieId %>" class="btn btn-primary btn-hover" cl
+                    ><i class="fa fa-play mr-2" aria-hidden="true"></i>الان تماشا
+                    کن</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="slider-inner h-100">
+            <div class="row align-items-center iq-ltr-direction h-100">
+              <div class="col-xl-6 col-lg-12 col-md-12">
+                <h1
+                  class="slider-text big-title title text-uppercase"
+                  data-animation-in="fadeInLeft"
+                  data-delay-in="0.6"
+                >
+                  جان ویک
+                </h1>
+  
+                <div
+                  class="d-flex flex-wrap align-items-center fadeInLeft animated"
+                  data-animation-in="fadeInLeft"
+                  style="opacity: 1"
+                >
+                  <div
+                    class="slider-ratting d-flex align-items-center mr-4 mt-2 mt-md-3"
+                  >
+                    <ul
+                      class="ratting-start p-0 m-0 list-inline text-primary d-flex align-items-center justify-content-left"
+                    >
+                      <li>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                      </li>
+                      <li>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                      </li>
+                      <li>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                      </li>
+                      <li>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                      </li>
+                      <li>
+                        <i class="fa fa-star-half" aria-hidden="true"></i>
+                      </li>
+                    </ul>
+                    <span class="text-white ml-2">4.7(lmdb)</span>
+                  </div>
+                  <div class="d-flex align-items-center mt-2 mt-md-3">
+                    <span class="badge badge-secondary p-2">18+</span>
+                    <span class="ml-3">2 فصل</span>
+                  </div>
+                </div>
+  
+                <div
+                  class="d-flex align-items-center"
+                  data-animation-in="fadeInUp"
+                  data-delay-in="1"
+                >
+                  <span class="badge badge-secondary p-2">18+</span>
+                  <span class="ml-3">2 Seasons</span>
+                </div>
+                <p data-animation-in="fadeInUp" data-delay-in="1.2">
+                  لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
+                  استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله
+                  در ستون و سطرآنچنان که لازم است
+                </p>
+                <div
+                  class="trending-list"
+                  data-wp_object-in="fadeInUp"
+                  data-delay-in="1.2"
+                >
+                  <div class="text-primary title starring">
+                    بازیگران:
+                    <span class="text-body"
+                      >Karen Gilchrist, James Earl Jones</span
+                    >
+                  </div>
+                  <div class="text-primary title genres">
+                    ژانرها: <span class="text-body">اکشن</span>
+                  </div>
+                  <div class="text-primary title tag">
+                    برچسب ها:
+                    <span class="text-body">اکشن, ماجراجویی, ترسناک</span>
+                  </div>
+                </div>
+                <div
+                  class="d-flex align-items-center r-mb-23"
+                  data-animation-in="fadeInUp"
+                  data-delay-in="1.2"
+                >
+                  <a href="show-details.html" class="btn btn-primary btn-hover" cl
+                    ><i class="fa fa-play mr-2" aria-hidden="true"></i>الان تماشا
+                    کن</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <%}) %>
+
+
+
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none">
+      <symbol
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 44 44"
+        width="44px"
+        height="44px"
+        id="circle"
+        fill="none"
+        stroke="currentColor"
+      >
+        <circle r="20" cy="22" cx="22" id="test"></circle>
+      </symbol>
+    </svg>
+  </div>
+</section>
+<!-- Slider End -->
+
+<%- include('box-movie') %>

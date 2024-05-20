@@ -1,0 +1,92 @@
+<!-- start grid-->
+<div class="page-content-wrapper">
+  <!-- start page content-->
+  <div class="page-content">
+    <div class="row">
+      <div class="col-xl-12 mx-auto">
+        <h6 class="mb-0 text-uppercase">جعبه ها</h6>
+        <hr />
+        <div class="card">
+          <div class="card-body">
+            <table class="table mb-0 table-dark table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">ردیف</th>
+                  <th scope="col">عنوان</th>
+                  <th scope="col">توضیحات</th>
+                  <th scope="col"></th>
+                  <th scope="col"></th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <% boxes.map((item,index)=>{%>
+                  <tr>
+                    <th scope="row"><%= index+1 %></th>
+                    <td><%= item.title%></td>
+                    <td><%= item.description %></td>
+                    <td>
+                      <span
+                      data-show-edit-modal="true"
+                      data-get-url="BoxManagement/editModal"
+                      data-id="<%= item.boxId %>"
+                      class="btn btn-warning"
+                    >
+                      <i class="bx bx-edit"></i>ویرایش
+                    </span>
+                  </td>
+                  <td>
+                    <span
+                    data-delete="true"
+                    data-post-url="BoxManagement/delete"
+                    data-id="<%= item.boxId %>"
+                    data-get-url="BoxManagement/search"
+                    data-grid-id="grid"
+                    data-confirm-message="آیا برای حذف جعبه مطمئن هستید؟"
+                    class="btn btn-danger"
+                    id="btnDelete"
+                  >
+                    <i class="bx bx-x"></i>حذف
+                  </span>
+                    </td>
+                    <td>
+                      <span
+                        data-show-edit-modal="true"
+                        data-get-url="BoxManagement/createBoxMovieModal"
+                        data-id="<%= item.boxId %>"
+                        class="btn btn-outline-success"
+                      >
+                        <i class="bx bx-plus"></i>ثبت فیلم
+                      </span>
+                      </td>
+                      <td>
+                        <span
+                        class="btn btn-outline-info"
+                        id="btnDetails"
+                        data-show-movie-details="true"
+                        data-id="<%= item.boxId %>"
+                      >
+                        <i class="bx bx-detail"></i>جزئیات فیلم ها
+                      </span>
+                      </td>
+                  </tr>
+                <%}) %>
+ 
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <nav aria-label="Page navigation example">
+    <ul class="pagination">
+      <%# for(var i=0;i<=sm.pageCount;i++){%>
+        <li class="page-item <%#= i===sm.pageIndex?'active':'' %>"><a class="page-link" href="BoxManagement/<%#= i %>"><%#= i+1 %></a></li>
+      <%#} %>
+    </ul>
+  </nav>
+  <!-- end page content-->
+</div>
+
+

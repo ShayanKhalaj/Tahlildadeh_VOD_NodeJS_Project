@@ -1,0 +1,87 @@
+<script>
+  
+</script>
+
+<!-- start grid-->
+<div class="page-content-wrapper">
+  <!-- start page content-->
+  <div class="page-content">
+    <div class="row">
+      <div class="col-xl-12 mx-auto">
+        <h6 class="mb-0 text-uppercase">فیلم ها</h6>
+        <hr />
+        <div class="card">
+          <div class="card-body">
+            <table class="table mb-0 table-dark table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">ردیف</th>
+                  <th scope="col">نام فیلم</th>
+                  <th scope="col"></th>
+                  <th scope="col"></th>
+                  <th scope="col"></th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <% movieSearchList.map((item,index)=>{%>
+                  <tr>
+                    <th><%= index+1 %></th>
+                    <td><%= item.movieName %></td>
+                    <td>
+                      <span
+                        data-show-edit-modal="true"
+                        data-get-url="MovieManagement/createVideoModal"
+                        data-id="<%= item.movieId %>"
+                        class="btn btn-outline-success"
+                      >
+                        <i class="bx bx-edit"></i>ثبت ویدئو جدید
+                      </span>
+                    </td>
+                    <td>
+                      <span
+                        data-show-edit-modal="true"
+                        data-get-url="MovieManagement/createMovieActorsModal"
+                        data-id="<%= item.movieId %>"
+                        class="btn btn-outline-info"
+                      >
+                        <i class="bx bx-edit"></i>ثبت بازیگران
+                      </span>
+                    </td>
+                    <td>
+                      <span
+                        data-delete-movie="true"
+                        data-post-url="MovieManagement/delete"
+                        data-id="<%= item.movieId %>"
+                        data-get-url="MovieManagement/search"
+                        data-grid-id="grid"
+                        data-confirm-message="آیا برای حذف فیلم مطمئن هستید؟"
+                        class="btn btn-danger"
+                        id="btnDelete"
+                      >
+                        <i class="bx bx-x"></i>حذف
+                      </span>
+                    </td>
+                    <td>
+                      <span
+                        class="btn btn-outline-info"
+                        id="btnDetails"
+                        data-show-details="true"
+                        data-id="<%= item.movieId %>"
+                      >
+                        <i class="bx bx-detail"></i>جزئیات
+                      </span>
+                    </td>
+                  </tr>
+                <%}) %>
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- end page content-->
+</div>

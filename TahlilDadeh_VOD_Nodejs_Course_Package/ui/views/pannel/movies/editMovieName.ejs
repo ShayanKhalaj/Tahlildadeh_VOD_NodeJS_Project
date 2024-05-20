@@ -1,0 +1,136 @@
+<div class="row justify-content-center">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <h6 class="mb-0">مدیریت فیلم ها</h6>
+      </div>
+      <br />
+      <div class="card-body">
+        <form id="frmEditMovieName" method="post">
+          <input
+            type="hidden"
+            name="movieId"
+            id="movieId"
+            value="<%= movie.movieId %>"
+          />
+          <input
+            type="hidden"
+            name="movieVideoUrl"
+            id="movieVideoUrl"
+            value="<%= movie.movieVideoUrl %>"
+          />
+          <input
+            type="hidden"
+            name="coverImageAlter"
+            id="coverImageAlter"
+            value="<%= movie.coverImageAlter %>"
+          />
+          <input
+            type="hidden"
+            name="coverImageUrl"
+            id="coverImageUrl"
+            value="<%= movie.coverImageUrl %>"
+          />
+          <input
+            type="hidden"
+            name="description"
+            id="description"
+            value="<%= movie.description %>"
+          />
+          <input
+            type="hidden"
+            name="summary"
+            id="summary"
+            value="<%= movie.summary %>"
+          />
+          <input
+            type="hidden"
+            name="time"
+            id="time"
+            value="<%= movie.time %>"
+          />
+          <input
+            type="hidden"
+            name="minAge"
+            id="minAge"
+            value="<%= movie.minAge %>"
+          />
+          <input
+            type="hidden"
+            name="yearOfBuilt"
+            id="yearOfBuilt"
+            value="<%= movie.yearOfBuilt %>"
+          />
+          <input
+            type="hidden"
+            name="imdb"
+            id="imdb"
+            value="<%= movie.imdb %>"
+          />
+          <input
+            type="hidden"
+            name="hasSubText"
+            id="hasSubText"
+            value="<%= movie.hasSubText %>"
+          />
+          <input
+            type="hidden"
+            name="genreId"
+            id="genreId"
+            value="<%= movie.genreId %>"
+          />
+          <input
+            type="hidden"
+            name="categoryId"
+            id="categoryId"
+            value="<%= movie.categoryId %>"
+          />
+          <input
+            type="hidden"
+            name="authorId"
+            id="authorId"
+            value="<%= movie.authorId %>"
+          />
+          <input
+            type="hidden"
+            name="directorId"
+            id="directorId"
+            value="<%= movie.directorId %>"
+          />
+          <input
+            type="hidden"
+            name="musicianId"
+            id="musicianId"
+            value="<%= movie.musicianId %>"
+          />
+          <div class="form-group">
+            <label for="movieName">نام فیلم</label>
+            <input
+              type="text"
+              class="form-control"
+              name="movieName"
+              id="movieName"
+              value="<%= movie.movieName %>"
+            />
+          </div>
+          <br />
+          <div class="form-group">
+            <span
+              class="btn btn-outline-warning"
+              data-post-url="MovieManagement/editMovieName"
+              data-get-url="MovieManagement/showDetails"
+              data-form-id="frmEditMovieName"
+              data-page-id="dvSearchBox"
+              data-modal-id="modal"
+              data-edit-movie-name="true"
+              data-search-url="MovieManagement/search"
+              data-movie-id="<%= movie.movieId %>"
+              data-grid-id="grid"
+              >ویرایش نام فیلم</span
+            >
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
